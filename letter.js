@@ -10,11 +10,13 @@ var Letter = function(storeLetter) {
   this.checkLetter = function(guessedLetter) {
     if (guessedLetter == this.letter) {
         this.guessed = true;
-        return this.displayLetter();
+        // return this.displayLetter();
+        return true
     }
     else {
         // guessed is not set here because the letter may have previously been guessed
-        return this.displayLetter();
+        // return this.displayLetter();
+        return false
     }
   };
 
