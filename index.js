@@ -2,27 +2,26 @@
 var Word = require("./word.js");
 var guessedLetter = "";
 var guessedLetters = [];
-var availableCharacters = "abcdefghijklmnopqrstuvwxy";
+var availableCharacters = "abcdefghijklmnopqrstuvwxyz";
 var gameCountdownGuesses = 10;
-var game
 
 // test output - REPLACE with logic to randomly select a word
 // ensure word is lowercase
 var gameWord = new Word("assignment");
 
 // prompt user with instructions
-console.log("*******************************************");
-console.log("**********                       **********");
-console.log("******      Constructor Hangman      ******");
-console.log("**********                       **********");
-console.log("*******************************************\n");
-console.log("Try to guess the word, one letter at a time.");
-console.log("If you correctly guess a letter in the word,");
-console.log("that letter will be displayed in all places.\n");
-console.log("You win when the entire word is displayed!\n");
-console.log("If the letter guessed is not anywhere in the");
-console.log("word then it is an incorrect guess. You can");
-console.log("make ten incorrect guesses before you lose.\n");
+console.log("***********************************************");
+console.log("************                       ************");
+console.log("********      Constructor Hangman      ********");
+console.log("************                       ************");
+console.log("***********************************************\n");
+console.log("  Try to guess the word, one letter at a time.");
+console.log("  If you correctly guess a letter in the word,");
+console.log("  that letter will be displayed in all places.\n");
+console.log("  You win when the entire word is displayed!\n");
+console.log("  If the letter guessed is not anywhere in the");
+console.log("  word then it is an incorrect guess. You can");
+console.log("  make ten incorrect guesses before you lose.\n");
 
 // function playGame() {
     function playGame(guessedLetter) {
@@ -33,17 +32,21 @@ console.log("make ten incorrect guesses before you lose.\n");
 if (testLetter(guessedLetter)) {
     // evaluate valid letter against word
     if (gameWord.guessLetter(guessedLetter)) {
-        console.log("C O R R E C T ! ! !");
+        console.log("\nC O R R E C T ! ! !\n");
         console.log("Letter " + guessedLetter + " was found");
         console.log(gameWord.displayWord());
-        if (gameWord.allLettersDisplayed) {
+// console.log(gameWord.lettersDisplayed);
+// console.log(gameWord.word);
+// console.log(gameWord.word.length);
+        if (gameWord.lettersDisplayed == gameWord.word.length) {
             console.log("Win game");
-        }
+        };
     } else {
-        console.log("W R O N G ! ! !");
+        console.log("\nW R O N G ! ! !\n");
         console.log("Letter " + guessedLetter + " was NOT found");
         console.log(gameWord.displayWord());
         gameCountdownGuesses--;
+        console.log("Remaining guesses: " + gameCountdownGuesses);
         if (gameCountdownGuesses == 0) {
             console.log("Lose game");
         }
@@ -57,10 +60,10 @@ if (testLetter(guessedLetter)) {
 
 function testLetter(guessedLetter) {
 if (wasLetterGuessed(guessedLetter)) {
-    console.log("You've already guessed letter " + guessedLetter + ". Try again.");
+    console.log("\nYou've already guessed letter " + guessedLetter + ". Try again.");
     return false
         } else if (isValidLetter(guessedLetter) === false) {
-            console.log("Character " + guessedLetter + " is not a valid a-z letter. Try again.");
+            console.log("\nCharacter " + guessedLetter + " is not a valid a-z letter. Try again.");
             return false
     } else {
     // letter was not guessed before and is valid
@@ -94,17 +97,24 @@ function wasLetterGuessed(guessedLetter) {
 
 // TEST
 playGame("s");
-playGame("o");
 playGame("e");
 playGame("t");
 playGame("a");
+playGame("g");
+playGame("m");
+playGame("n");
+playGame("u");
+playGame("c");
+playGame("b");
+playGame("p");
+playGame("q");
+playGame("w");
+playGame("x");
+playGame("z");
+playGame("l");
 playGame("s");
 // playGame("i"); in testLetter
-playGame("j");
-playGame("g");
-playGame("n");
-
-
+playGame("k");
 
 
 
