@@ -1,14 +1,26 @@
 // use letter.js for checking and displaying letters of the word
 var Word = require("./word.js");
 var inquirer = require("inquirer");
+var fs = require("fs");
 var guessedLetter = "";
 var guessedLetters = [];
 var availableCharacters = "abcdefghijklmnopqrstuvwxyz";
 var gameCountdownGuesses = 10;
+var gameWord = [];
 
-// test output - REPLACE with logic to randomly select a word
-// ensure word is lowercase
-var gameWord = new Word("assignment");
+// choose random word from file
+fs.readFile("wordlist.txt", "utf8", function(err, data) {
+    if (err) {
+      return console.log(err);
+    }
+    // transform list of words to an array
+    var wordlist = data.split("\r\n");
+    // grab random index based on length of word list
+    var randomIndex = Math.floor(Math.random() * Math.floor(wordlist.length));
+    var randomWord = wordlist[randomIndex].toLowerCase();
+    // create random word for game play
+    gameWord = new Word(randomWord);
+});
 
 // prompt user with instructions
 console.log("***********************************************");
