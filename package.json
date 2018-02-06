@@ -9,5 +9,8 @@
   },
   "author": "Tim Rugg",
   "license": "ISC",
-  "homepage": "https://github.com/Timster2938/ConstructorHangman#readme"
+  "homepage": "https://github.com/Timster2938/ConstructorHangman#readme",
+  "dependencies": {
+    "inquirer": "^5.1.0"
+  }
 }
