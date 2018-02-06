@@ -3,7 +3,14 @@
 // Letter will be passed in when creating new Letters and the guessed will default to false.
 var Letter = function(storeLetter) {
   this.letter = storeLetter;
-  this.guessed = false;
+  this.guessed = isSpace();
+
+function isSpace() {
+    if (storeLetter == " ") {
+        return true;
+    };
+    return false;
+};
 
   // checks if a guessed letter matches the stored letter. If so guessed to true. 
   // Use display to return the stored letter or underscore.
